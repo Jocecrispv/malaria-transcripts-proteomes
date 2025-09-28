@@ -8,11 +8,10 @@ It supports both:
 
 
 ## Features
-
-    - Download protein FASTA sequences from PlasmoDB
-    - Preprocess FASTA files (remove non-amino acid characters, uppercase sequences)
-    - Run InterProScan analysis for each input FASTA file
-    - Generate outputs in TSV format with protein domain annotations
+  - Download protein FASTA sequences from PlasmoDB
+  - Preprocess FASTA files (remove non-amino acid characters, uppercase sequences)
+  - Run InterProScan analysis for each input FASTA file
+  - Generate outputs in TSV format with protein domain annotations
 
 
 ## Requirements
@@ -22,7 +21,6 @@ It supports both:
 * **Apptainer** (instead of Singularity)
 * **Linux environment** or **HPC cluster**
 
-***
 
 ## Setup
 
@@ -42,7 +40,8 @@ Example run:
 ./interproscan.sh \
   -i data/fasta_files/PlasmoDB-67_Pfalciparum3D7_AnnotatedProteins.fasta \
   -o output/resultados_1.tsv \
-  -f tsv```
+  -f tsv
+```
 
 ### 3. Containerized Execution (recommended)
 Follow the **InterProScan installation via Container** (https://interproscan-docs.readthedocs.io/en/v5/HowToUseViaContainer.html)
@@ -50,21 +49,21 @@ Follow the **InterProScan installation via Container** (https://interproscan-doc
 **Pull the InterProScan image**
 
 ```bash
-
-apptainer pull docker://interproscan/interproscan```
+apptainer pull docker://interproscan/interproscan
+```
 
 **Preprocess FASTA**
 
 ```bash
-
 cd input
 
 awk '/^>/ {if(NR>1) printf("\n"); print $1; next} {printf("%s", toupper($0))} END {printf("\n")}' PlasmoDB-67_PyoeliiyoeliiYM_AnnotatedProteins.fasta | \
 sed '/^>/! s/[^A-Z]//g' > PlasmoDB-67_PyoeliiyoeliiYM.fasta
 
-cd ..```
+cd ..
+```
 
-**Run InterProScan (container-based)**
+**Run InterProScan**
 
 ```bash
 apptainer exec \
@@ -77,14 +76,15 @@ apptainer exec \
   --input /input/PlasmoDB-67_PyoeliiyoeliiYM.fasta \
   --output-dir /output/PlasmoDB-67_PyoeliiyoeliiYM \
   --tempdir /temp \
-  --cpu 8```
+  --cpu 8
+  ```
 
-# See executable script:
+### See executable script:
 workflows/run_interproscan.sh
 
 
 ## References
 
-* **InterProScan Documentation**
-* **PlasmoDB**
-* **NMRBox**
+* **InterProScan Documentation** (https://interproscan-docs.readthedocs.io/en/v5/)
+* **PlasmoDB** (https://plasmodb.org/plasmo/app)
+* **NMRBox** (https://nmrbox.nmrhub.org/)

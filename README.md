@@ -21,8 +21,8 @@ It covers:
 - Command-line usage:
 
 ```bash
-python scripts/transcript_downloader.py "Plasmodium falciparum 3D7"```
-
+python scripts/transcript_downloader.py "Plasmodium falciparum 3D7" 
+```
 
 ### 2. Proteome Downloader (`scripts/proteome_downloader.py`)
 
@@ -35,14 +35,15 @@ python scripts/transcript_downloader.py "Plasmodium falciparum 3D7"```
 **Command-line usage:**
 
 ```bash
-python scripts/proteome_downloader.py "Plasmodium vivax P01"```
+python scripts/proteome_downloader.py "Plasmodium vivax P01"
+```
 
 ###  Protein Functional Annotation with InterProScan
 
 Step-by-step instructions for annotating downloaded proteomes are included in the workflow guide:  
     [InterProScan Workflow Guide](workflows/interproscan_instructions.md)
     
-    This guide covers both:
+  This guide covers both:
     - **Standalone installation**  
     - **Containerized execution using Apptainer/Singularity**
 
@@ -62,8 +63,8 @@ Step-by-step instructions for annotating downloaded proteomes are included in th
 Install dependencies:  
 
 ```bash
-pip install requests```
-
+pip install requests
+```
 - For InterProScan:
     - Standalone: Java & local installation
     - Containerized: Apptainer/Singularity
@@ -74,14 +75,13 @@ pip install requests```
 1. **Download transcripts:**
 
 ```bash
-python scripts/transcript_downloader.py -o "Plasmodium falciparum 3D7" -f Pf3D7_transcripts.gff3 ```
-
-2. Download proteome:
+python scripts/transcript_downloader.py -o "Plasmodium falciparum 3D7" -f Pf3D7_transcripts.gff3
+```
+2. **Download proteome:**
 
 ```bash
-python scripts/proteome_downloader.py "Plasmodium falciparum 3D7"```
-
-3. Run InterProScan annotation:
-
-# See full instructions:
+python scripts/proteome_downloader.py "Plasmodium falciparum 3D7"
+```
+3. **Run InterProScan annotation:**
+#### See full instructions:
 workflows/interproscan_instructions.md
